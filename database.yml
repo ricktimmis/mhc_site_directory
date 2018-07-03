@@ -1,0 +1,11 @@
+development:
+  dialect: "sqlite3"
+  database: /home/ricktimmis/Go/src/github.com/ricktimmis/mhclub_development.sqlite
+
+test:
+  dialect: "sqlite3"
+  database: /home/ricktimmis/Go/src/github.com/ricktimmis/mhclub_test.sqlite
+
+production:
+  dialect: "sqlite3"
+  database: /home/ricktimmis/Go/src/github.com/ricktimmis/mhclub_production.sqlite
