@@ -1,4 +1,4 @@
-
+ 
 # MotorHome Club Specification
 
 ## Overview
@@ -31,13 +31,15 @@ id, username, first_name, last_name, email, birthday, location, images_id, membe
 
 The data provides some useful metrics about logons when last seen to help with marketing and community promotion
 
+Implement last_seen_date and logon_count via an activity_audit table. This holds logon, logoff, timeout date time details for every user. last_seen_date is then implemented as a func on the activity_audit model, and is logon_count.
+
 ## Sites
 
 Sites are locations that where club members can stay in their motorhomes, there are 4 types club_sites, pub_stops, wild_camping, and stop_overs. Sites are owned, and maintained by Patron members. A site record provides Edit functionality to the user registered as the sites owner. Patron members have the ability to create club_site listings. Each site listing has an annual listing fee of £24. Updates and amendments are free, listings expire on their anniversary and requiring renewal with a listing fee. 
 
 ### Sites data table
 
-id, site_name, description, attractions, email, telephone, website, facilities_id ( use a referencing table, so you can have differences at each site ), site_type, owning_user ( related user_id ), images_id. Images which are to appear in the site carousel, are recorded in the images table
+id, site_name, description, attractions, email, telephone, website, facilities( use a referencing table, so you can have differences at each site ), sitetype, owninguser ( related user_id ), images(images which are to appear in the site carousel, are recorded in the images table) longitude latitude addressstreet locality town county postcode 
 
 ### Images function and data table
 
@@ -57,8 +59,16 @@ IF2 - Accepts a related_id ( held by the related record), and returns a map of i
 
 ## Club Caches
 
-Caches provide a geo_cache style activity. Caches are placed in interesting locations, that are worthy of a visit by members. Caches can be placed on any of our sites. for club_sites and pub_stops the physical site owner must give permission for the cache to be placed, and must be willing for club members to visit without staying or incurring a fee to retrieve the cache. Caches have a unique "Playing Card" and the Cache Found register uses this identifier to determine whether the registering users is making a legitimate claim of the find.
+Caches provide a geo_cache style activity. Caches are placed in interesting locations, that are worthy of a visit by members. Caches can be placed on any of our sites. for club_sites and pub_stops the physical site owner must give permission for the cache to be placed, and must be willing for club members to visit without staying or incurring a fee to retrieve the cache. Caches have a unique "Playing Card"(secretnumber, secretname e.g Ace Clubs) and the Cache Found register uses this identifier to determine whether the registering users is making a legitimate claim of the find.
 Cache placements are also reviewing and featured in the Club Magazine ( No Fixed Abode )
+
+Caches are validated once they are first found by someone other than the deployer. Caches are maintained via a status (Deployed, Found, Muggled, Lost, Missing, Removed)
+
+### Clucb Cache data model
+
+cachename description:null.text secretnumber secretname images longitude latitude validated:false.bool deployedby onsite status
+
+buffalo g resource caches cachename description:null.text secretnumber secretname images longitude latitude validated:false.bool deployedby onsite status 
 
 ## Events 
 
