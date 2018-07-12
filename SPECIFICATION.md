@@ -64,7 +64,7 @@ Cache placements are also reviewing and featured in the Club Magazine ( No Fixed
 
 Caches are validated once they are first found by someone other than the deployer. Caches are maintained via a status (Deployed, Found, Muggled, Lost, Missing, Removed)
 
-### Clucb Cache data model
+### Club Cache data model
 
 cachename description:null.text secretnumber secretname images longitude latitude validated:false.bool deployedby onsite status
 
