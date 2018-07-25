@@ -1,0 +1,23 @@
+<%= partial("navbar.html") %>
+<div class="page-header">
+  <h1>Image#Show</h1>
+</div>
+
+<ul class="list-unstyled list-inline">
+  <li class="list-inline-item"><a href="<%= imagesPath() %>" class="btn btn-info">Back to all Images</a></li>
+  <li class="list-inline-item"><a href="<%= editImagePath({ image_id: image.ID })%>" class="btn btn-warning">Edit</a></li>
+  <li class="list-inline-item"><a href="<%= imagePath({ image_id: image.ID })%>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+</ul>
+
+<p>
+  <strong>RelatedID</strong>: <%= image.RelatedID %>
+</p>
+<p>
+  <strong>Original</strong>: <%= image.Original %>
+</p>
+<p>
+  <strong>Resized</strong>: <%= image.Resized %>
+</p>
+<p>
+  <strong>Thumbnail</strong>: <%= image.Thumbnail %>
+</p>

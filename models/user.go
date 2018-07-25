@@ -22,7 +22,8 @@ type User struct {
 	Birthday          nulls.Time `json:"birthday" db:"birthday"`
 	Location          string     `json:"location" db:"location"`
 	Membertype        string     `json:"membertype" db:"membertype"`
-	Logintype         string     `json:"logintype" db:"logintype"`
+	LoginProvider     string     `json:"loginprovider" db:"loginprovider"`
+	LoginProviderID   string     `json:"loginprovider_id" db:"loginprovider_id"`
 	Membershipexpires nulls.Time `json:"membershipexpires" db:"membershipexpires"`
 }
 
@@ -51,7 +52,6 @@ func (u *User) Validate(tx *pop.Connection) (*validate.Errors, error) {
 		&validators.StringIsPresent{Field: u.Email, Name: "Email"},
 		&validators.StringIsPresent{Field: u.Location, Name: "Location"},
 		&validators.StringIsPresent{Field: u.Membertype, Name: "Membertype"},
-		&validators.StringIsPresent{Field: u.Logintype, Name: "Logintype"},
 	), nil
 }
 

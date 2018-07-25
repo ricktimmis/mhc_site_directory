@@ -29,6 +29,7 @@ func App() *buffalo.App {
 		app = buffalo.New(buffalo.Options{
 			Env:         ENV,
 			SessionName: "_mhclub_session",
+			Host:        "http://motorhomeclub.net:3000",
 		})
 		// Automatically redirect to SSL
 		app.Use(forceSSL())
@@ -45,6 +46,7 @@ func App() *buffalo.App {
 		//  c.Value("tx").(*pop.PopTransaction)
 		// Remove to disable this.
 		app.Use(middleware.PopTransaction(models.DB))
+		app.Use(SetCurrentUser)
 
 		// Setup and use translations:
 		app.Use(translations())
@@ -56,7 +58,12 @@ func App() *buffalo.App {
 		auth := app.Group("/auth")
 		auth.GET("/{provider}", buffalo.WrapHandlerFunc(gothic.BeginAuthHandler))
 		auth.GET("/{provider}/callback", AuthCallback)
-		app.GET("/signup/SignupHandler", SignupSignupHandler)
+		auth.GET("/signup/SignupHandler", SignupSignupHandler)
+		// Guest access - Login required
+		guest := app.Resource("/images", ImagesResource{})
+		guest.Use(AuthorizeGuest)
+
+
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
