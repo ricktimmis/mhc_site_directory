@@ -1,3 +1,4 @@
+<%= partial("navbar.html") %>
 <div class="page-header">
   <h1>Users</h1>
 </div>
@@ -14,7 +15,7 @@
     <th>Birthday</th>
     <th>Location</th>
     <th>Membertype</th>
-    <th>Logintype</th>
+    <th>LoginProvider</th>
     <th>Membershipexpires</th>
     <th>&nbsp;</th>
   </thead>
@@ -28,7 +29,7 @@
         <td><%= user.Birthday %></td>
         <td><%= user.Location %></td>
         <td><%= user.Membertype %></td>
-        <td><%= user.Logintype %></td>
+        <td><%= user.LoginProvider %></td>
         <td><%= user.Membershipexpires %></td>
         <td>
           <div class="pull-right">

@@ -35,25 +35,25 @@ Implement last_seen_date and logon_count via an activity_audit table. This holds
 
 ## Sites
 
-Sites are locations that where club members can stay in their motorhomes, there are 4 types club_sites, pub_stops, wild_camping, and stop_overs. Sites are owned, and maintained by Patron members. A site record provides Edit functionality to the user registered as the sites owner. Patron members have the ability to create club_site listings. Each site listing has an annual listing fee of £24. Updates and amendments are free, listings expire on their anniversary and requiring renewal with a listing fee. 
+Sites are locations that where club members can stay in their motorhomes, there are 4 types club_sites, pub_stops, wild_camping, and stop_overs. Sites are owned, and maintained by Patron members. A site record provides Edit functionality ONLY to the user registered as the sites owner. Patron members have the ability to create club_site listings. Each site listing has an annual listing fee of £24. Updates and amendments are free, listings expire on their anniversary and requiring renewal with a listing fee. 
 
 ### Sites data table
 
-id, site_name, description, attractions, email, telephone, website, facilities( use a referencing table, so you can have differences at each site ), sitetype, owninguser ( related user_id ), images(images which are to appear in the site carousel, are recorded in the images table) longitude latitude addressstreet locality town county postcode 
+id, site_name, description, attractions, email, telephone, website, facilities( use a referencing table, so you can have differences at each site ), sitetype, owninguser ( related user_id ), images(images which are to appear in the site carousel, are recorded in the images table and referenced via the images.related_id), longitude, latitude, addressstreet, locality, town, county, postcode, listingexpires( Date when listing should no longer be shown) 
 
 ### Images function and data table
 
-All site images are held in the images table, and stored in the ./images/<image_type>/ directory, there are 3 image_type directories
+All site images are held in the images table, and stored in the ./images/<image_type>/ directory on the filesystem (SysAdmin:- Backups will be required), there are 3 image_type directories
 
- * originals
- * resized 
- * thumbnails 
+ * /originals
+ * /resized 
+ * /thumbnails 
  
-id, related_id image_original, image_resized, image_thumbnail
+id, related_id, original, resized, thumbnail
 
 Images are processed, saved and retrieved by the imageManager function. The function provides to interfaces
 
-IF1 - Accepts a map of images ( which have been uploaded ) it saves Originals, creates a resized and cropped version, and a thumbnail of the resized image, it writes these to file, and creates an entry for them in the images data table with a unique id, and a related_id for the batch. Thus, an upload of 8 images, would generat 8 rows in the table, with unique id's, but all 8 rows would hold the same related_id, and return the related_id for the related record to store. 
+IF1 - Accepts a map of images ( which have been uploaded ) it saves Originals, creates a resized and cropped version, and a thumbnail of the resized image, it writes these to file, and creates an entry for them in the images data table with a unique id, and a related_id for the batch. Thus, an upload of 8 images, would generate 8 rows in the database table, with unique id's, but all 8 rows would hold the same related_id, and return the related_id for the related record to store. 
 
 IF2 - Accepts a related_id ( held by the related record), and returns a map of image URL's
 
@@ -63,8 +63,9 @@ Caches provide a geo_cache style activity. Caches are placed in interesting loca
 Cache placements are also reviewing and featured in the Club Magazine ( No Fixed Abode )
 
 Caches are validated once they are first found by someone other than the deployer. Caches are maintained via a status (Deployed, Found, Muggled, Lost, Missing, Removed)
+A notification mechanism is employed that updates the Cache seeder, when ever someone finds the cache. A confirmation mechanism is provided within each cache, where by a playing card is taped to this inside of the cache tub lid. A finder registering the find must correctly state the Suit, and the Face ( 1,2,3...J,Q,K etc..), this confirms their find, and logs it against their Cache Log. It also sends an email to the Seeder, letting them know that the user found their cache. Club Caches implement the Clap and Comment functions.
 
-### Clucb Cache data model
+### Club Cache data model
 
 cachename description:null.text secretnumber secretname images longitude latitude validated:false.bool deployedby onsite status
 
@@ -85,3 +86,11 @@ As per Medium Claps allow users to rate site and cache records by using the Clap
 ## Mag-e-zine
 
 TODO - Based upon the Medium model, but also provides a monthly generated PDF, which is generated from content created that month... TODO
+
+# Membership Benefits, and Monetisation
+
+I'm not sure whether I like the idea of paid for membership levels, as that is not very inclusive. I notice that Free Code Camp use Flash Card Pop ups to try to encourage their uses to take out a monthly subscription.
+I was thinking that this could work well for MotorHome Club. It needs some form of badgeing system, perhaps with something applied to the users avatar, that lets other users know.
+
+Perhaps levels could be Guest ( Black n White avatar ), Nomad ( £2.00 per month, £20 per year ), Pilgrim ( £4.00, £40 per year ) , and a Founder ( £6.00, £ 60 per year ) - Yearly subscribers get 2 months for free.
+Founder members also get the benefit of being placed on the site reviewers register, which grants them free stays at sites across the UK whilst performing a site or attraction review.

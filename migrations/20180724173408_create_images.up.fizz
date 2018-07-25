@@ -1,0 +1,7 @@
+create_table("images") {
+        t.Column("id", "uuid", {"primary": true})
+        t.Column("related_id", "string", {})
+        t.Column("original", "string", {})
+        t.Column("resized", "string", {})
+        t.Column("thumbnail", "string", {})
+}
