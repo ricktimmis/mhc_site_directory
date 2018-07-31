@@ -33,3 +33,11 @@ We recommend you heading over to [http://gobuffalo.io](http://gobuffalo.io) and 
 Good luck!
 
 [Powered by Buffalo](http://gobuffalo.io)
+
+## Managing development
+
+We are using Git Flow to manage the branching strategy, and following the standard Git Flow patterns
+
+    $ git flow help
+
+[GitFlow cheat sheet](https://danielkummer.github.io/git-flow-cheatsheet/)

@@ -1,0 +1,13 @@
+create_table("users", func(t) {
+	t.Column("id", "uuid", {"primary": true})
+	t.Column("username", "string", {})
+	t.Column("firstname", "string", {})
+	t.Column("lastname", "string", {})
+	t.Column("email", "string", {})
+	t.Column("birthday", "timestamp", {"null": true})
+	t.Column("location", "string", {})
+	t.Column("membertype", "string", {})
+	t.Column("loginprovider", "string", {})
+	t.Column("loginprovider_id", "string", {})
+	t.Column("membershipexpires", "timestamp", {"null": true})
+})
