@@ -39,9 +39,15 @@ Sites are locations that where club members can stay in their motorhomes, there 
 
 ### Sites data table
 
-id, site_name, description, attractions, email, telephone, website, facilities( use a referencing table, so you can have differences at each site ), sitetype, owninguser ( related user_id ), images(images which are to appear in the site carousel, are recorded in the images table and referenced via the images.related_id), longitude, latitude, addressstreet, locality, town, county, postcode, listingexpires( Date when listing should no longer be shown) 
+id, name, description, attractions, email, telephone, website, facilities( use a referencing table, so you can have differences at each site ), sitetype, owninguser ( related user_id ), images(images which are to appear in the site carousel, are recorded in the images table and referenced via the images.related_id), longitude, latitude, addressstreet, locality, town, county, postcode, listingexpires( Date when listing should no longer be shown) 
 
-### Images function and data table
+After some thinking, and in regard to managing access to Sites for various member types ( which presented a problem in that, I could not see a way of passing the resource being access to the authorisor)
+I have decided to implement sites as 4 discrete resources ( campsites, pustops, stopovers, and wildcamps) This enables me to wrap the resources with the appropriate authorisation.
+This also enables me to group resources by authorisation type. 
+However, this is not very SOLID in that we're creating more resources than we need, and more authorizers than we need. But, this does fit well in the sense that whenever a user tries to access a resource
+that their membership does not provide, they get a message telling that, rather than an empty data set.
+However, I have kept the  data structure (as described above ) the same for each model, so that this can be refactored out later if required.
+## Images function and data table
 
 All site images are held in the images table, and stored in the ./images/<image_type>/ directory on the filesystem (SysAdmin:- Backups will be required), there are 3 image_type directories
 
