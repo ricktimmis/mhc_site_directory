@@ -1,0 +1,59 @@
+<div class="page-header">
+  <h1>Campsites</h1>
+</div>
+<ul class="list-unstyled list-inline">
+  <li><a href="<%= newCampsitesPath() %>" class="btn btn-primary">Create New Campsite</a></li>
+</ul>
+
+<table class="table table-striped">
+  <thead>
+  <th>Name</th>
+    <th>Email</th>
+    <th>Telephone</th>
+    <th>Website</th>
+    <th>Facilities</th>
+    <th>Owninguser</th>
+    <th>Images</th>
+    <th>Longitude</th>
+    <th>Latitude</th>
+    <th>Addressstreet</th>
+    <th>Locality</th>
+    <th>Town</th>
+    <th>County</th>
+    <th>Postcode</th>
+    <th>Listingexpires</th>
+    <th>&nbsp;</th>
+  </thead>
+  <tbody>
+    <%= for (campsite) in campsites { %>
+      <tr>
+      <td><%= campsite.Name %></td>
+        <td><%= campsite.Email %></td>
+        <td><%= campsite.Telephone %></td>
+        <td><%= campsite.Website %></td>
+        <td><%= campsite.Facilities %></td>
+        <td><%= campsite.Owninguser %></td>
+        <td><%= campsite.Images %></td>
+        <td><%= campsite.Longitude %></td>
+        <td><%= campsite.Latitude %></td>
+        <td><%= campsite.Addressstreet %></td>
+        <td><%= campsite.Locality %></td>
+        <td><%= campsite.Town %></td>
+        <td><%= campsite.County %></td>
+        <td><%= campsite.Postcode %></td>
+        <td><%= campsite.Listingexpires %></td>
+        <td>
+          <div class="pull-right">
+            <a href="<%= campsitePath({ campsite_id: campsite.ID }) %>" class="btn btn-info">View</a>
+            <a href="<%= editCampsitePath({ campsite_id: campsite.ID }) %>" class="btn btn-warning">Edit</a>
+            <a href="<%= campsitePath({ campsite_id: campsite.ID }) %>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+          </div>
+        </td>
+      </tr>
+    <% } %>
+  </tbody>
+</table>
+
+<div class="text-center">
+  <%= paginator(pagination) %>
+</div>

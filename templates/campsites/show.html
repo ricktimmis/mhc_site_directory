@@ -1,0 +1,61 @@
+<div class="page-header">
+  <h1>Campsite#Show</h1>
+</div>
+
+<ul class="list-unstyled list-inline">
+  <li class="list-inline-item"><a href="<%= campsitesPath() %>" class="btn btn-info">Back to all Campsites</a></li>
+  <li class="list-inline-item"><a href="<%= editCampsitePath({ campsite_id: campsite.ID })%>" class="btn btn-warning">Edit</a></li>
+  <li class="list-inline-item"><a href="<%= campsitePath({ campsite_id: campsite.ID })%>" data-method="DELETE" data-confirm="Are you sure?" class="btn btn-danger">Destroy</a>
+</ul>
+
+<p>
+  <strong>Name</strong>: <%= campsite.Name %>
+</p>
+<p>
+  <strong>Description</strong>: <%= campsite.Description %>
+</p>
+<p>
+  <strong>Attractions</strong>: <%= campsite.Attractions %>
+</p>
+<p>
+  <strong>Email</strong>: <%= campsite.Email %>
+</p>
+<p>
+  <strong>Telephone</strong>: <%= campsite.Telephone %>
+</p>
+<p>
+  <strong>Website</strong>: <%= campsite.Website %>
+</p>
+<p>
+  <strong>Facilities</strong>: <%= campsite.Facilities %>
+</p>
+<p>
+  <strong>Owninguser</strong>: <%= campsite.Owninguser %>
+</p>
+<p>
+  <strong>Images</strong>: <%= campsite.Images %>
+</p>
+<p>
+  <strong>Longitude</strong>: <%= campsite.Longitude %>
+</p>
+<p>
+  <strong>Latitude</strong>: <%= campsite.Latitude %>
+</p>
+<p>
+  <strong>Addressstreet</strong>: <%= campsite.Addressstreet %>
+</p>
+<p>
+  <strong>Locality</strong>: <%= campsite.Locality %>
+</p>
+<p>
+  <strong>Town</strong>: <%= campsite.Town %>
+</p>
+<p>
+  <strong>County</strong>: <%= campsite.County %>
+</p>
+<p>
+  <strong>Postcode</strong>: <%= campsite.Postcode %>
+</p>
+<p>
+  <strong>Listingexpires</strong>: <%= campsite.Listingexpires %>
+</p>

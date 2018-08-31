@@ -1,0 +1,6 @@
+- id: "campsite.created.success"
+  translation: "Campsite was successfully created."
+- id: "campsite.updated.success"
+  translation: "Campsite was successfully updated."
+- id: "campsite.destroyed.success"
+  translation: "Campsite was successfully destroyed."

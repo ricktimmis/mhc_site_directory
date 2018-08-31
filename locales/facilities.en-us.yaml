@@ -1,0 +1,6 @@
+- id: "facility.created.success"
+  translation: "Facility was successfully created."
+- id: "facility.updated.success"
+  translation: "Facility was successfully updated."
+- id: "facility.destroyed.success"
+  translation: "Facility was successfully destroyed."

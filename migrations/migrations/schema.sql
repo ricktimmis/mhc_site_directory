@@ -26,31 +26,3 @@ CREATE TABLE IF NOT EXISTS "images" (
 "created_at" DATETIME NOT NULL,
 "updated_at" DATETIME NOT NULL
 );
-CREATE TABLE IF NOT EXISTS "campsites" (
-"id" TEXT PRIMARY KEY,
-"name" TEXT NOT NULL,
-"description" text,
-"attractions" text,
-"email" TEXT NOT NULL,
-"telephone" TEXT NOT NULL,
-"website" TEXT,
-"facilities" char(36) NOT NULL,
-"owninguser" char(36) NOT NULL,
-"images" char(36) NOT NULL,
-"longitude" float,
-"latitude" float,
-"addressstreet" TEXT,
-"locality" TEXT,
-"town" TEXT,
-"county" TEXT,
-"postcode" TEXT,
-"listingexpires" DATETIME NOT NULL,
-"created_at" DATETIME NOT NULL,
-"updated_at" DATETIME NOT NULL
-);
-CREATE TABLE IF NOT EXISTS "facilities" (
-"id" TEXT PRIMARY KEY,
-"name" TEXT,
-"created_at" DATETIME NOT NULL,
-"updated_at" DATETIME NOT NULL
-);

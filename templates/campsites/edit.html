@@ -1,0 +1,8 @@
+<div class="page-header">
+  <h1>Edit Campsite</h1>
+</div>
+
+<%= form_for(campsite, {action: campsitePath({ campsite_id: campsite.ID }), method: "PUT"}) { %>
+  <%= partial("campsites/form.html") %>
+  <a href="<%= campsitePath({ campsite_id: campsite.ID }) %>" class="btn btn-warning" data-confirm="Are you sure?">Cancel</a>
+<% } %>

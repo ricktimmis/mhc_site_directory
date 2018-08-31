@@ -63,7 +63,9 @@ func App() *buffalo.App {
 		guest := app.Resource("/images", ImagesResource{})
 		guest.Use(AuthorizeGuest)
 
-
+		app.Resource("/campsites", CampsitesResource{})
+		app.Resource("/campsites", CampsitesResource{})
+		app.Resource("/facilities", FacilitiesResource{})
 		app.ServeFiles("/", assetsBox) // serve files from the public directory
 	}
 
