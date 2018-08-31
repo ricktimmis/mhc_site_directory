@@ -1,4 +1,6 @@
-# Welcome to Buffalo!
+# MHC Directory
+
+## Welcome to Buffalo!
 
 Thank you for choosing Buffalo for your web development needs.
 
@@ -41,3 +43,4 @@ We are using Git Flow to manage the branching strategy, and following the standa
     $ git flow help
 
 [GitFlow cheat sheet](https://danielkummer.github.io/git-flow-cheatsheet/)
+
